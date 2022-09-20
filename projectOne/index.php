@@ -1,5 +1,4 @@
 <?php 
-
 ?>
 
 <!DOCTYPE html>
@@ -14,33 +13,42 @@
 	<title></title>
 </head>
 <body>
-<div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
+<div class="container">           
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Email</th>
+        <th>Action</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+    <tbody>  
+    	<?php 
+			include "config/database.php";
+			$query = "SELECT id, firstName, lastName, email FROM students ORDER BY id desc";
+			$stmt = $con->prepare($query);
+			$stmt->execute();
+			$num = $stmt->rowcount();
+
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				extract($row);
+				echo "<tr>";
+					echo "<td>$id</td>";
+					echo "<td>$firstName</td>";
+					echo "<td>$lastName</td>";
+					echo "<td>$email</td>";
+					echo "<td>";
+						echo "<button type='button' class='btn btn-primary'>Read</button>";
+						echo "<button type='button' class='btn btn-warning'>Edit</button>";
+						echo "<button type='button' class='btn btn-danger'>Delete</button>";
+					echo "</td>";
+				echo "</tr>";
+
+			}
+
+    	?>
     </tbody>
   </table>
 </div>
