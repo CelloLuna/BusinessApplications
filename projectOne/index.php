@@ -1,3 +1,14 @@
+<?php 
+
+	$action = isset($_GET['action']) ? $_GET['action'] : "";
+
+	if ($action == "Successful") {
+		echo "<div class = 'alert alert-success'> Data Entry Successful </div>";
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,13 +52,22 @@
 						echo "<td>";
 							echo "<button type='button' class='btn btn-primary'>Read</button>";
 							echo "<button type='button' class='btn btn-warning'>Edit</button>";
-							echo "<button type='button' class='btn btn-danger'>Delete</button>";
+							echo "<a href='#' onclick='delete_data({$id});' type='button' class='btn btn-danger'>Delete</a>";
 						echo "</td>";
 					echo "</tr>";
 
 				}
 
 			?>
+
+			<script type="text/javascript">
+				
+				function delete_data(id) {
+					var answer = confirm("Are you sure you want to delete this student?")
+				}
+
+			</script>
+
 		</tbody>
 	</table>
 </div>
