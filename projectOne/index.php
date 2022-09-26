@@ -4,6 +4,11 @@
 
 	if ($action == "Successful") {
 		echo "<div class = 'alert alert-success'> Data Entry Successful </div>";
+
+	} 
+
+	if ($action == "Deleted") {
+		echo "<div class = 'alert alert-danger'> Data Deleted Successfully </div>";
 	}
 
 ?>
@@ -64,6 +69,9 @@
 				
 				function delete_data(id) {
 					var answer = confirm("Are you sure you want to delete this student?")
+					if (answer) {
+						window.location = "delete.php?id=" + id;
+					}
 				}
 
 			</script>
