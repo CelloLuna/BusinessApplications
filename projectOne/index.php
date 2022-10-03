@@ -11,6 +11,10 @@
 		echo "<div class = 'alert alert-danger'> Data Deleted Successfully </div>";
 	}
 
+	if ($action == "Updated") {
+		echo "<div class = 'alert alert-success'> Data Updated Successfully </div>";
+	}
+
 ?>
 
 
@@ -55,9 +59,9 @@
 						echo "<td>$lastName</td>";
 						echo "<td>$email</td>";
 						echo "<td>";
-							echo "<button type='button' class='btn btn-primary'>Read</button>";
-							echo "<button type='button' class='btn btn-warning'>Edit</button>";
-							echo "<a href='#' onclick='delete_data({$id});' type='button' class='btn btn-danger'>Delete</a>";
+							echo "<button type='button' class='btn btn-primary'>Read</button> ";
+							echo "<a href='edit.php?id={$id}' type='button' class='btn btn-warning'>Edit</a> ";
+							echo "<a href='#' onclick='delete_data({$id});' type='button' class='btn btn-danger'>Delete</a> ";
 						echo "</td>";
 					echo "</tr>";
 
